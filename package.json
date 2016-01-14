@@ -41,7 +41,6 @@
     "cov": "babel-node node_modules/.bin/isparta cover --report html --report text --excludes src/**/*.test.js _mocha -- --require src/test/jsdomHelper.js --reporter list src/**/*.test.js",
     "lint": "eslint src && jscs src",
     "build": "node build/buildLibrary.js",
-    "start": "node build/devServer.js",
     "test": "mocha --compilers js:babel-register --require src/test/jsdomHelper.js src/**/*.test.js",
     "tdd": "watch 'clear && npm run -s test' src",
     "tdd:lint": "watch 'clear && npm run -s lint && npm run -s test' src"
