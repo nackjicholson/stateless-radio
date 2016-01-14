@@ -31,7 +31,7 @@ describe('StatelessRadio', () => {
       .length;
     const expected = 1;
 
-    assert.equal(actual, expected, 'rendered wrapper div #{baseId}-wrapper');
+    assert.equal(actual, expected, 'rendered wrapper div with id from baseId prop');
   });
 
   it('should render a p tag with the text from the titleText prop', () => {
@@ -47,7 +47,7 @@ describe('StatelessRadio', () => {
     assert.equal(
       actual,
       expected,
-      'rendered a title with the text from the title prop'
+      'rendered a title with the text from the titleText prop'
     );
   });
 
@@ -61,7 +61,7 @@ describe('StatelessRadio', () => {
     };
     const component = createComponent(props);
     const $component = $(component).render();
-    const $inputs = $component.find('input');
+    const $inputs = $component.find('input[type=radio]');
     const $labels = $component.find('label');
 
     const actualInputValues = $inputs
@@ -112,9 +112,9 @@ describe('StatelessRadio', () => {
       .get()
       .filter(inputNode => inputNode.checked)
       .map(inputNode => inputNode.value);
-    const expected = 'bravo.value';
+    const expected = ['bravo.value'];
 
-    assert.equal(
+    assert.deepEqual(
       actual,
       expected,
       'checked the input with the value equal to defaultValue prop'
