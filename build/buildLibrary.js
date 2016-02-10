@@ -5,7 +5,7 @@ var webpackConfig = require('../webpack.config');
 
 var libraryConfig = {
   entry: {
-    statelessRadio: path.resolve(__dirname, '../src/statelessRadio.js')
+    statelessRadioGroup: path.resolve(__dirname, '../src/statelessRadioGroup.js')
   },
   output: {
     path: path.resolve(__dirname, '../dist/'),

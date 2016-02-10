@@ -1,50 +1,34 @@
-function statelessRadio(React) {
-  function StatelessRadio(props) {
-    const {
-      baseId,
-      defaultValue,
-      inputs = [],
-      titleText,
-      onSelection = () => {}
-    } = props;
+function statelessRadio(React, config) {
+  const {
+    name,
+    defaultValue,
+    onSelection = () => void 0
+  } = config;
 
-    function handleSelectionChange(event) {
-      onSelection(event.target.value);
+  function StatelessRadio(props) {
+    const defaultChecked = (defaultValue === props.value);
+
+    function handleSelectionChange() {
+      onSelection(props.value);
     }
 
-    const titleId = `${baseId}__title`;
-
     return (
-      <div id={baseId}>
-        <p id={titleId}>{titleText}</p>
-        {inputs.map((inputItem, index) => {
-          const inputId = `${baseId}__input${index}`;
-          const defaultChecked = (defaultValue === inputItem.value);
-
-          return (
-            <div key={index}>
-              <input
-                id={inputId}
-                name={baseId}
-                type="radio"
-                value={inputItem.value}
-                defaultChecked={defaultChecked}
-                onChange={handleSelectionChange}
-              />
-              <label htmlFor={inputId}>{inputItem.label}</label>
-            </div>
-          );
-        })}
-      </div>
+      <input
+        {...props}
+        type="radio"
+        name={name}
+        defaultChecked={defaultChecked}
+        onChange={handleSelectionChange}
+      />
     );
   }
 
   StatelessRadio.propTypes = {
-    baseId: React.PropTypes.string,
-    defaultValue: React.PropTypes.string,
-    inputs: React.PropTypes.array,
-    titleText: React.PropTypes.string,
-    onSelection: React.PropTypes.func
+    value: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number,
+      React.PropTypes.bool
+    ])
   };
 
   return StatelessRadio;
