@@ -20,7 +20,7 @@ function handleChange(value) {
   // do something with the value of the newly selected radio input.
 }
 
-<StatelessRadioGroup name="fruit" selectedValue="orange" onChange={handleChange}>
+<StatelessRadioGroup name="fruit" defaultValue="orange" onSelection={handleChange}>
   {RadioInput =>
     <div>
       <RadioInput value="apple" />Apple
