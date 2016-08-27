@@ -38,7 +38,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "react": "^0.14.6"
+    "react": ">0.14.6"
   },
   "scripts": {
     "cov": "babel-node node_modules/.bin/isparta cover --report html --report text --excludes src/**/*.test.js _mocha -- --require src/test/jsdomHelper.js --reporter list src/**/*.test.js",
